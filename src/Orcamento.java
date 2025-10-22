@@ -2,6 +2,7 @@
     import java.util.ArrayList;
     import java.util.List;
 
+
 public class Orcamento {
     private List<Produto> produtos = new ArrayList<>();
     private List<Integer> quantidades = new ArrayList<>();
@@ -16,7 +17,7 @@ public class Orcamento {
     public double calcularTotal() {
         double total = 0;
         for (int i = 0; i < produtos.size(); i++){
-            total += produtos.get(i).getPreço() * quantidades.get(i);
+            total += produtos.get(i).getPreco() * quantidades.get(i);
         }
         return total;
     }

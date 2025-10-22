@@ -1,23 +1,24 @@
+
 public class Produto {
     //atributos(informações que vão compor a classe produto)
     private String nome;
-    private double preço;
+    private double preco;
     private int estoque;
-    //metodo construtor. este vai ser chamado quando um objeto desta classe for criado
-    //etre parenteses estou passando os parametros do metodo, elas que guardam os dados colhidos pelo metodo
+    //    //metodo construtor. este vai ser chamado quando um objeto desta classe for criado
+    //    //etre parenteses estou passando os parametros do metodo, elas que guardam os dados colhidos pelo metodo
 
-    public Produto(String nome, double preço, int estoque){
+    public Produto(String nome, double preco, int estoque) {
         this.nome = nome;
-        this.preço = preço;
+        this.preco = preco;
         this.estoque = estoque;
     }
     //metodos get e set
 
-    public String getNome(){
+    public String getNome() {
         return nome;
     }
-    public double getPreço(){
-        return preço;
+    public double getPreco(){
+        return preco;
     }
     public int getEstoque(){
         return estoque;
@@ -36,6 +37,6 @@ public class Produto {
     }
     @Override
     public String toString() {
-        return nome + " - R$ " + preço + " (Estoque: " + estoque + ")";
+        return nome + " - R$ " + preco + " (Estoque: " + estoque + ")";
     }
 }
