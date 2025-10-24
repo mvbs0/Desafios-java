@@ -17,7 +17,6 @@ public class Orcamento2 extends Orcamento {
         }
 
         total = pagamentoAvista ? total * 0.8 : total;
-        System.out.println(pagamentoAvista ? "Desconto de 20% aplicado!" : "Sem desconto aplicado.");
 
         return total;
 

@@ -31,11 +31,26 @@ public class Main {
             switch (opcao){
                 case'1':
                     Orcamento2 orcamento = new Orcamento2();
-                    orcamento.adicionarProdutos(p1, 2);
-                    orcamento.adicionarProdutos(p2,3 );
-                    orcamento.listarProdutos();
 
-                    //testando o if ternario e adicionando metodo de pagamento
+                    System.out.println("--- Catálogo de Produtos ---");
+                    for(int i = 0; i < produtos.size(); i++){
+                    System.out.println((i + 1) + "-" + produtos.get(i).getNome());
+                }
+
+                    int escolha = -1;
+                    while (escolha!=0) {
+                        System.out.println("Digite o numero do produto (ou 0 para finalizar): ");
+                        escolha=scanner.nextInt();
+                        if (escolha > 0 && escolha <= produtos.size()) {
+                            Produto escolhido = produtos.get(escolha - 1);
+                            System.out.println("Digite a quantidade desejada: ");
+                            int quantidade = scanner.nextInt();
+                            orcamento.adicionarProdutos(escolhido, quantidade);
+                        } else if (escolha != 0) {
+                            System.out.println("Produto inválido!");
+                        }
+
+                    }
                     System.out.println("\n--- Forma de pagamento ---");
                     System.out.println("1. À vista (20% de desconto)");
                     System.out.println("2. Parcelado (sem desconto)");
@@ -49,17 +64,20 @@ public class Main {
 
                     double totalFinal = pagamentoAvista ? orcamento.calcularTotal() * 0.8 : orcamento.calcularTotal();
                     double desconto = pagamentoAvista ? orcamento.calcularTotal() * 0.2 : 0.0;
-                    // alterar strings para variavel nomeada, lembrar do desonto
+                    //Atributos criados para substituir string e atualizaçao do resultado mostrado para apenas duas casa decimais após a virgula. Pegurntar a caique porque que n conseguir por toda a frase dentro do string fomat
+                    String comDesconto = String.format("%.2f", desconto );
+                    String semDesconto ="Sem desconto aplicado.";
+
                     System.out.println(pagamentoAvista
-                            ? "Desconto de 20% aplicado! Você economizou R$ " + desconto
-                            : "Sem desconto aplicado.");
+                            ? "Desconto de 20% aplicado! Você economizou R$ " + comDesconto
+                            : semDesconto);
 
                     Venda venda = new Venda(orcamento);
                     venda.confirmarVenda();
                     venda.detalhesVenda();
 
-                    System.out.println("Valor final da venda: R$ " + totalFinal);// alterar valor final para aceitar apenas duas casa decimais.
-
+                    String resultado = String.format("%.2f" , totalFinal);
+                    System.out.println("Valor final da venda: R$ " + resultado);
                     break;
 
                 case'2':
